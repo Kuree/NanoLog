@@ -154,7 +154,7 @@ namespace nanolog
     }
 
     template < typename Arg >
-    char * decode(std::ostream & os, char * b, Arg * dummy)
+    char * decode(std::ostream & os, char * b, Arg *)
     {
 	Arg arg = *reinterpret_cast < Arg * >(b);
 	os << arg;
@@ -162,7 +162,7 @@ namespace nanolog
     }
 
     template <>
-    char * decode(std::ostream & os, char * b, NanoLogLine::string_literal_t * dummy)
+    char * decode(std::ostream & os, char * b, NanoLogLine::string_literal_t *)
     {
 	NanoLogLine::string_literal_t s = *reinterpret_cast < NanoLogLine::string_literal_t * >(b);
 	os << s.m_s;
@@ -170,7 +170,7 @@ namespace nanolog
     }
 
     template <>
-    char * decode(std::ostream & os, char * b, char ** dummy)
+    char * decode(std::ostream & os, char * b, char **)
     {
 	while (*b != '\0')
 	{
